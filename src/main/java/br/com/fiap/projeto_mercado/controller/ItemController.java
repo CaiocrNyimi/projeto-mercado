@@ -40,31 +40,31 @@ public class ItemController {
     @CacheEvict(value = "itens", allEntries = true)
     @ResponseStatus(HttpStatus.CREATED)
     public Item create(@RequestBody @Valid Item item) {
-        log.info("Cadastrando item " + item.getNome());
+        log.info("Cadastrando item " + item.getId());
         return repository.save(item);
     }
 
-    @PutMapping("{nome}")
+    @PutMapping("{id}")
     @CacheEvict(value = "itens", allEntries = true)
-    public Item update(@PathVariable String nome, @RequestBody Item item) {
-        log.info("Atualizando item " + nome + " " + item);
-        getItem(nome);
-        item.setNome(nome);
+    public Item update(@PathVariable Long id, @RequestBody Item item) {
+        log.info("Atualizando item " + id + " - " + item);
+        getItem(id);
+        item.setId(id);
         return repository.save(item);
     }
 
-    @DeleteMapping("{nome}")
+    @DeleteMapping("{id}")
     @CacheEvict(value = "itens", allEntries = true)
-    public void destroy(@PathVariable String nome) {
-        log.info("Apagando item " + nome);
-        repository.delete(getItem(nome));
+    public void destroy(@PathVariable Long id) {
+        log.info("Apagando item id " + id);
+        repository.delete(getItem(id));
     }
 
-    private Item getItem(String nome) {
+    private Item getItem(Long id) {
         return repository
-                .findByNome(nome)
+                .findById(id)
                 .orElseThrow(
                         () -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                                "Item " + nome + " não encontrado!"));
+                                "Item com id " + id + " não encontrado!"));
     }
 }

@@ -2,6 +2,8 @@ package br.com.fiap.projeto_mercado.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -20,8 +22,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Personagem {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     @NotBlank(message = "O nome é obrigatório!")
-    @Column(unique = true)
     private String nome;
 
     @Pattern(regexp = "^(guerreiro|mago|arqueiro)$", message = "A classe deve ser guerreiro, mago ou arqueiro!")
