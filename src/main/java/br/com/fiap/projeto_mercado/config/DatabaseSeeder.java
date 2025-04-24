@@ -131,7 +131,7 @@ public class DatabaseSeeder {
                 Item.builder().nome("Poção de Cura Menor").tipo("poção").raridade("comum").preco(10.00)
                         .dono(personagens.stream().filter(p -> p.getNome().equals("Mônica")).findFirst().orElse(null))
                         .build(),
-                Item.builder().nome("Amuleto da Sorte").tipo("acessório").raridade("raro").preco(75.00)
+                Item.builder().nome("Amuleto da Sorte").tipo("acessório").raridade("épico").preco(75.00)
                         .dono(personagens.stream().filter(p -> p.getNome().equals("Magali")).findFirst().orElse(null))
                         .build(),
                 Item.builder().nome("Arco Simples").tipo("arma").raridade("comum").preco(30.00)
@@ -144,7 +144,7 @@ public class DatabaseSeeder {
                 Item.builder().nome("Poção de Mana Pequena").tipo("poção").raridade("comum").preco(12.00)
                         .dono(personagens.stream().filter(p -> p.getNome().equals("Zé Lelé")).findFirst().orElse(null))
                         .build(),
-                Item.builder().nome("Anel de Agilidade").tipo("acessório").raridade("raro").preco(90.00)
+                Item.builder().nome("Anel de Agilidade").tipo("acessório").raridade("lendário").preco(90.00)
                         .dono(personagens.stream().filter(p -> p.getNome().equals("Hiro")).findFirst().orElse(null))
                         .build(),
                 Item.builder().nome("Cajado de Madeira").tipo("arma").raridade("comum").preco(20.00)

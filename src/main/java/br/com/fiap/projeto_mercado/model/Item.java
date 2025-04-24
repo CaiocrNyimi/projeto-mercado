@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
@@ -35,9 +36,10 @@ public class Item {
     private String raridade;
 
     @Positive(message = "O preço deve ser positivo!")
+    @NotNull(message = "O campo 'preco' é obrigatório e não pode ser nulo")
     private double preco;
 
     @ManyToOne
-    @JoinColumn(name = "nome_dono")
+    @JoinColumn(name = "id_dono")
     private Personagem dono;
 }
